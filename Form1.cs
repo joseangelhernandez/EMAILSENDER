@@ -13,8 +13,8 @@ namespace EmailSender
             InitializeComponent();
         }
 
-        //Inicio metodo btnCancelar_click
-        //Vacía todos los campos cuando el usuario le da a cancelar
+        // Inicio metodo btnCancelar_click
+        // Vacía todos los campos cuando el usuario le da a cancelar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             tbEmailReceptor.Clear();
@@ -87,6 +87,11 @@ namespace EmailSender
             smtpClient.EnableSsl = true;
 
             return smtpClient;
+        }
+
+        private void btnEnviar_Click_1(object sender, EventArgs e)
+        {
+
         }
         //Fin metodo RealizarConexionSMTP
     }
