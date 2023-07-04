@@ -76,12 +76,12 @@ namespace EmailSender
         private SmtpClient RealizarConexionSMTP()
         {
             //Server address: smtp.gmail.com
-            //SSL: 465
+            //SSL: 587
 
             SmtpClient smtpClient = new SmtpClient();
 
             smtpClient.Host = "smtp.gmail.com";
-            smtpClient.Port = 465;
+            smtpClient.Port = 587;
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new NetworkCredential(correoEmisor, "tkllfsnkoaewxpvh");
             smtpClient.EnableSsl = true;
