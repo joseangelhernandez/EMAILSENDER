@@ -6,6 +6,8 @@ namespace EmailSender
 {
     public partial class Form1 : Form
     {
+        string correoEmisor = "correodummyintec@gmail.com";
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace EmailSender
         //Fin metodo btnCancelar_click
 
 
-        //Inicio metodo btnInicio_click
+        //Inicio metodo btnEnviar_click
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             if (tbEmailReceptor.Text == "")
@@ -61,7 +63,10 @@ namespace EmailSender
         {
             MailMessage mailMessage = new MailMessage();
 
-            //Insertar logica mailMessage
+            mailMessage.From = new MailAddress(correoEmisor);
+            mailMessage.To.Add(tbEmailReceptor.Text);
+            mailMessage.Subject = tbAsunto.Text;
+            mailMessage.Body = tbCuerpoMsg.Text;
 
             return mailMessage;
         }
@@ -75,7 +80,11 @@ namespace EmailSender
 
             SmtpClient smtpClient = new SmtpClient();
 
-            //Insertar logica smtpClient
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.Port = 465;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new NetworkCredential(correoEmisor, "tkllfsnkoaewxpvh");
+            smtpClient.EnableSsl = true;
 
             return smtpClient;
         }
